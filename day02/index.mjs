@@ -7,7 +7,7 @@ const test = [
   "up 3",
   "down 8",
   "forward 2",
-];
+]; // part1 = 150, part2 = 900
 
 const positions = fs.readFileSync("./positions.txt", "utf-8").split(/\n/);
 
@@ -27,4 +27,4 @@ function calculateDive01(positions) {
   return horizontal * vertical;
 }
 
-console.log(calculateDive01(positions)); // 1694130
+console.log(`Part1: ${calculateDive01(positions)}`); // 1694130
