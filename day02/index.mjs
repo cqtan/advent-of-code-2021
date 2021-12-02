@@ -28,3 +28,25 @@ function calculateDive01(positions) {
 }
 
 console.log(`Part1: ${calculateDive01(positions)}`); // 1694130
+
+function calculateDive02(positions) {
+  let horizontal = 0;
+  let depth = 0;
+  let aim = 0;
+
+  positions.forEach((pos) => {
+    if (pos.includes("forward")) {
+      const hVal = Number(pos.replace("forward ", ""));
+      horizontal += hVal;
+      depth += aim * hVal;
+    } else if (pos.includes("down")) {
+      aim += Number(pos.replace("down ", ""));
+    } else if (pos.includes("up")) {
+      aim -= Number(pos.replace("up ", ""));
+    }
+  });
+
+  return horizontal * depth;
+}
+
+console.log(`Part2: ${calculateDive02(positions)}`); // 1698850445
