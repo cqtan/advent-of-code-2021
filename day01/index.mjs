@@ -9,6 +9,7 @@ const sweeps = fs
 function getNumDepthIncreased(sweeps) {
   let counter = 0;
   let prev = 0;
+
   sweeps.forEach((sweep, idx) => {
     prev = idx > 0 ? sweeps[idx - 1] : sweep;
     sweep > prev && counter++;
@@ -17,4 +18,22 @@ function getNumDepthIncreased(sweeps) {
   return counter;
 }
 
-console.log(getNumDepthIncreased(sweeps)); // 1616
+console.log(getNumDepthIncreased(`Part 1: ${sweeps}`)); // 1616
+
+function getNumDepthIncreasedBySums(sweeps) {
+  const maxLength = sweeps.length;
+  let counter = 0;
+  let prev = 0;
+
+  sweeps.forEach((_, idx) => {
+    if (idx + 2 < maxLength) {
+      const sum = sweeps[idx] + sweeps[idx + 1] + sweeps[idx + 2];
+      prev = idx > 0 ? sweeps[idx - 1] + sweeps[idx] + sweeps[idx + 1] : sum;
+      sum > prev && counter++;
+    }
+  });
+
+  return counter;
+}
+
+console.log(getNumDepthIncreasedBySums(`Part2: ${sweeps}`)); // 1645
