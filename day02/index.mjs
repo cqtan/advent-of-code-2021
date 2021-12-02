@@ -13,18 +13,18 @@ const positions = fs.readFileSync("./positions.txt", "utf-8").split(/\n/);
 
 function calculateDive01(positions) {
   let horizontal = 0;
-  let vertical = 0;
+  let depth = 0;
   positions.forEach((pos) => {
     if (pos.includes("forward")) {
       horizontal += Number(pos.replace("forward ", ""));
     } else if (pos.includes("down")) {
-      vertical += Number(pos.replace("down ", ""));
+      depth += Number(pos.replace("down ", ""));
     } else if (pos.includes("up")) {
-      vertical -= Number(pos.replace("up ", ""));
+      depth -= Number(pos.replace("up ", ""));
     }
   });
 
-  return horizontal * vertical;
+  return horizontal * depth;
 }
 
 console.log(`Part1: ${calculateDive01(positions)}`); // 1694130
